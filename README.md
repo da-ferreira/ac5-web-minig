@@ -31,7 +31,7 @@ Rode o arquivo : `scripts/dataScraper.ipynb`. Rode todas as células do notebook
 
 ### 5. Rodando o streamlit:
 ```
-python .\scripts\dataPlot.py
+streamlit run .\scripts\dataPlot.py
 ```
 
 ### 6. Rodando a aplicação (estando na raiz do projeto):
