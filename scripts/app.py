@@ -10,7 +10,7 @@ import datetime
 
 app = Flask(__name__, template_folder='../templates', static_folder='../static')
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../database.db'
 app.config['SECRET_KEY'] = 'ASDA_sdfui767q3kklasdjfn'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
@@ -23,10 +23,10 @@ login_manager.login_view = 'login'
 
 @login_manager.user_loader
 def load_user(user_id):
-    return User.query.get(int(user_id))
+    return Users.query.get(int(user_id))
 
 
-class User(db.Model, UserMixin):
+class Users(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     username = db.Column(db.String(30), unique=True, nullable=False)
     password = db.Column(db.String(90), nullable=False)
@@ -64,7 +64,7 @@ def register():
     form = RegistrationForm()
     if form.validate_on_submit():
         hashed_password = bcrypt.generate_password_hash(form.password.data).decode('utf-8')
-        user = User(username=form.username.data, password=hashed_password, created_at=datetime.datetime.now(), updated_at=datetime.datetime.now())
+        user = Users(username=form.username.data, password=hashed_password, created_at=datetime.datetime.now(), updated_at=datetime.datetime.now())
         db.session.add(user)
         db.session.commit()
         flash('Cadastro realizado com sucesso! Agora você pode fazer login.', 'success')
@@ -76,7 +76,7 @@ def register():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
+        user = Users.query.filter_by(username=form.username.data).first()
         if user and bcrypt.check_password_hash(user.password, form.password.data):
             login_user(user)
             return redirect(url_for('dashboards'))

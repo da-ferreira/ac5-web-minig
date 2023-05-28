@@ -27,10 +27,15 @@ pip install -r requirements.txt
 
 ### 4. Rodando o scrapping e salvando no banco de dados:
 Obs: O banco de dados já está populado, então não é necessário rodar o scrapping novamente. Apenas se quiser atualizar os dados.
-Rode o arquivo : `dataScraper.ipynb`. Rode todas as células do notebook.
+Rode o arquivo : `scripts/dataScraper.ipynb`. Rode todas as células do notebook.
 
-### 5. Rodando a aplicação (estando na raiz do projeto):
+### 5. Rodando o streamlit:
 ```
-cd scripts
-python .\app.py
+python .\scripts\dataPlot.py
+```
+
+### 6. Rodando a aplicação (estando na raiz do projeto):
+:warning: **OBS: É obrigatório manter a aplicação do streamlit rodando para rodar a aplicação principal.** :warning:
+```
+python .\scripts\app.py
 ```
