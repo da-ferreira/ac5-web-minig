@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - Flask Login e Cadastro</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                <ul class="messages">
+                    {% for category, message in messages %}
+                        <li class="flash-message flash-{{ category }}">{{ message }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        <h1>Login</h1>
+        <form method="POST" action="{{ url_for('login') }}">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.username.label }} {{ form.username(size=30, class_='form-control') }}
+            </div>
+            <div class="form-group">
+                {{ form.password.label }} {{ form.password(size=30, class_='form-control') }}
+            </div>
+            <div class="form-group">
+                {{ form.submit(class_='btn btn-primary') }}
+            </div>
+        </form>
+        <p>Ainda não possui uma conta? <a href="{{ url_for('register') }}">Cadastre-se</a></p>
+    </div>
+</body>
+</html>
