@@ -2,9 +2,7 @@
 Integrantes
 David Ferreira de Almeida - 1904024
 Matheus de Jesus Oliveira - 1903603
-Pedro Henrique Oliveira Dantas Lopes - 1904007
 Rafael Serino Kiss - 1903107
-Thiago Souza do Amparo - 1904089
 
 ### Como rodar o projeto
 
